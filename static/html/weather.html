@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>weather</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/weatherstyles.css">
+    <script src="../../static/js/jquery-3.6.0.js"></script>
+    <script src="../../static/js/weatherscript.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/windbarb.js"></script>
+    <script src="https://code.highcharts.com/modules/pattern-fill.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+<script>
+
+
+</script>
+
+<div id="blanker">
+
+
+</div>
+<div id="header">
+
+    <p class="p1">Weather Search</p><br>
+    <p class="p2">Fill out the form to get weather ifo!</p>
+</div>
+<div id="form">
+    <form id="form1" onsubmit="return false" action="##" method="get">
+        <p class="l1">Street<span>*</span></p>
+        <input class="i1" type="text" name="street" required><br>
+        <p class="l2">City<span>*</span></p><p class="l3">State<span>*</span></p><br>
+        <input class="i2" type="text" name="city" required>
+        <select name="selectstate" class="select" required>
+            <option value="">Select your state</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="California">California</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="District Of Columbia">District Of Columbia</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Washington">Washington</option>
+            <option value="West Virginia">West Virginia</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+    </select>
+        <hr class="h1">
+        <p class="l4">Want us to auto-detect your location? Check here <input class="ip3" type="checkbox" name="check" value="yes" onclick="fun1()"></p><br>
+        <button class="ip1" name="botton" onclick="fun2()">SUBMIT</button><button class="ip2" name="clear" onclick="fun3()">CLEAR</button>
+    </form>
+</div>
+<div id="blanker99"></div>
+<div id="record">
+    No records have been found.
+</div>
+<div id="blanker2"></div>
+<div id="card">
+    <div class="d1"><p class="d1p1">Los Angeles, CA 9007, USA</p></div>
+    <div class="d9">
+        <span class="d9s1"><img class="d9m1" src="../../static/img/clear_day.svg" alt="clear_day" width="100px"></span>
+        <span class="d9s2"></span>
+        <span class="d9s3">33.3°</span>
+    </div>
+    <div class="d3"><p class="d3p1">Clear</p></div>
+    <div class="d4"><span class="d4p1">Humidity</span><span class="d4p2">Pressure</span><span class="d4p3">Wind Speed</span>
+    <span class="d4p4">Visibility</span><span class="d4p5">Cloud Cover</span> <span class="d4p6" >UV Level</span></div>
+    <div class="d5">
+         <span class="d51"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-16-512.png" width="50px" alt=""></span>
+        <span class="d52"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-25-512.png" width="50px" alt=""></span>
+        <span class="d53"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-27-512.png" width="50px" alt=""></span>
+        <span class="d54"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-30-512.png" width="50px" alt=""></span>
+        <span class="d55"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-28-512.png" width="50px" alt=""></span>
+        <span class="d56"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-24-512.png" width="50px" alt=""></span>
+    </div>
+    <div class="d6">
+        <span class="d61">31%</span>
+        <span class="d62">1010.81inHg</span>
+        <span class="d63">3.81mph</span>
+        <span class="d64">16mi</span>
+        <span class="d65">0%</span>
+        <span class="d66">8</span></div>
+</div>
+<div id="blanker3"></div>
+<div id="fifteen">
+    <table id="table">
+        <tr id="title">
+            <th id="t1">Date</th>
+            <th id="t2">Status</th>
+            <th id="t3">Temp High</th>
+            <th id="t4">Temp Low</th>
+            <th id="t5">Wind Speed</th>
+        </tr>
+        <tr id="day1"  onclick="fun7(this)" >
+            <td id="d11">Sunday,05 Sep 2021</td>
+            <td id="d12"><img  class="m1" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s1">Cloudy</span></td>
+            <td id="d13">36.2</td>
+            <td id="d14">17.19</td>
+            <td id="d15">4.91</td>
+        </tr>
+        <tr id="day2" onclick="fun7(this)">
+            <td id="d21">Sunday,05 Sep 2021</td>
+            <td id="d22"><img class="m2" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s2">Cloudy</span></td>
+            <td id="d23">36.2</td>
+            <td id="d24">17.19</td>
+            <td id="d25">4.91</td>
+        </tr>
+            <tr id="day3" onclick="fun7(this)">
+            <td id="d31">Sunday,05 Sep 2021</td>
+            <td id="d32"><img class="m3" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s3">Cloudy</span></td>
+            <td id="d33">36.2</td>
+            <td id="d34">17.19</td>
+            <td id="d35">4.91</td>
+        </tr>
+           <tr id="day4" onclick="fun7(this)">
+            <td id="d41">Sunday,05 Sep 2021</td>
+            <td id="d42"><img class="m4" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s4">Cloudy</span></td>
+            <td id="d43">36.2</td>
+            <td id="d44">17.19</td>
+            <td id="d45">4.91</td>
+        </tr>
+        <tr id="day5" onclick="fun7(this)">
+            <td id="d51">Sunday,05 Sep 2021</td>
+            <td id="d52"><img class="m5" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s5">Cloudy</span></td>
+            <td id="d53">36.2</td>
+            <td id="d54">17.19</td>
+            <td id="d55">4.91</td>
+        </tr>
+        <tr id="day6" onclick="fun7(this)">
+            <td id="d61">Sunday,05 Sep 2021</td>
+            <td id="d62"><img class="m6" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s6">Cloudy</span></td>
+            <td id="d63">36.2</td>
+            <td id="d64">17.19</td>
+            <td id="d65">4.91</td>
+        </tr>
+        <tr id="day7" onclick="fun7(this)">
+            <td id="d71">Sunday,05 Sep 2021</td>
+            <td id="d72"><img class="m7" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s7">Cloudy</span></td>
+            <td id="d73">36.2</td>
+            <td id="d74">17.19</td>
+            <td id="d75">4.91</td>
+        </tr>
+        <tr id="day8" onclick="fun7(this)">
+            <td id="d81">Sunday,05 Sep 2021</td>
+            <td id="d82"><img class="m8" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s8">Cloudy</span></td>
+            <td id="d83">36.2</td>
+            <td id="d84">17.19</td>
+            <td id="d85">4.91</td>
+        </tr>
+        <tr id="day9" onclick="fun7(this)">
+            <td id="d91">Sunday,05 Sep 2021</td>
+            <td id="d92"><img class="m9" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s9">Cloudy</span></td>
+            <td id="d93">36.2</td>
+            <td id="d94">17.19</td>
+            <td id="d95">4.91</td>
+        </tr>
+        <tr id="day10" onclick="fun7(this)" >
+            <td id="d101">Sunday,05 Sep 2021</td>
+            <td id="d102"><img class="m10" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s10">Cloudy</span></td>
+            <td id="d103">36.2</td>
+            <td id="d104">17.19</td>
+            <td id="d105">4.91</td>
+        </tr>
+        <tr id="day11" onclick="fun7(this)">
+            <td id="d111">Sunday,05 Sep 2021</td>
+            <td id="d112"><img class="m11" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s11">Cloudy</span></td>
+            <td id="d113">36.2</td>
+            <td id="d114">17.19</td>
+            <td id="d115">4.91</td>
+        </tr>
+        <tr id="day12" onclick="fun7(this)">
+            <td id="d121">Sunday,05 Sep 2021</td>
+            <td id="d122"><img class="m12" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s12">Cloudy</span></td>
+            <td id="d123">36.2</td>
+            <td id="d124">17.19</td>
+            <td id="d125">4.91</td>
+        </tr>
+        <tr id="day13" onclick="fun7(this)">
+            <td id="d131">Sunday,05 Sep 2021</td>
+            <td id="d132"><img class="m13" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s13">Cloudy</span></td>
+            <td id="d133">36.2</td>
+            <td id="d134">17.19</td>
+            <td id="d135">4.91</td>
+        </tr>
+        <tr id="day14" onclick="fun7(this)">
+            <td id="d141">Sunday,05 Sep 2021</td>
+            <td id="d142"><img class="m14" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s14">Cloudy</span></td>
+            <td id="d143">36.2</td>
+            <td id="d144">17.19</td>
+            <td id="d145">4.91</td>
+        </tr>
+        <tr id="day15" onclick="fun7(this)">
+            <td id="d151">Sunday,05 Sep 2021</td>
+            <td id="d152"><img class="m15" src="../../static/img/cloudy.svg" alt="" width="50px"><span class="s15">Cloudy</span></td>
+            <td id="d153">36.2</td>
+            <td id="d154">17.19</td>
+            <td id="d155">4.91</td>
+        </tr>
+    </table>
+</div>
+
+<div id="blanker4">
+
+</div>
+<div id="detailTitle" >
+     Daily Weather Details
+</div>
+<div id="blanker5"></div>
+<div id="detail">
+    <div id="daily1"><p class="dap1">Wednesday,08 Sep 2021 </p><img class="dam1" src="../../static/img/drizzle.svg" width="160px" alt=""></div>
+    <div id="daily2"><span class="da21">Drizzle</span></div>
+    <div id="daily3"><span id="da31">81.3</span>°F/<span id="da32">64.98</span>°F</div>
+    <div id="daily4">
+            <table id="dailyTable">
+                <tr>
+                    <td class="td1">Precipitation:</td>
+                    <td class="td2">Rain</td>
+                </tr>
+                <tr>
+                    <td class="td1">Chance of Rain:</td>
+                    <td class="td2">60%</td>
+                </tr>
+                <tr>
+                    <td class="td1">Wind Speed:</td>
+                    <td class="td2">20.42mph</td>
+                </tr>
+                <tr>
+                    <td class="td1">Humidity:</td>
+                    <td class="td2">96.04%</td>
+                </tr>
+                <tr>
+                    <td class="td1">Visibility:</td>
+                    <td class="td2">9.94mi</td>
+                </tr>
+                <tr>
+                    <td class="td1">Sunrise/Sunset:</td>
+                    <td class="td2"><span id="td21">3AM/4PM</span></td>
+                </tr>
+            </table>
+    </div>
+</div>
+<div id="blanker6"></div>
+<div id="detailTail">
+Weather Charts
+</div>
+<div id="arrow" >
+    <img class="downUp" src="../../static/img/point-down-512.png" width="60px" alt="1"  onclick="fun10()">
+    <script>
+        function fun10() {
+            var downUp = document.getElementsByClassName("downUp")[0];
+            if (downUp.alt === "1") {
+                downUp.src = "../../static/img/point-up-512.png";
+                downUp.alt ="0";
+                var chart1 = document.getElementById("chart1");
+                var chart2 = document.getElementById("chart2");
+                chart1.style.display = "block";
+                chart2.style.display = "block";
+                var arr = fun9();
+            var nb = arr;
+            console.log(arr);
+                Highcharts.chart('container1', {
+
+      chart: {
+        type: 'arearange',
+        zoomType: 'x',
+        scrollablePlotArea: {
+          minWidth: 600,
+          scrollPositionX: 1
+        }
+      },
+
+      title: {
+        text: 'Temperature Ranges(Min,Max)'
+      },
+
+      xAxis: {
+        type: 'datetime',
+        accessibility: {
+          rangeDescription: 'Range: Sep 30 2021 to Oct 12 2021.'
+        }
+      },
+
+      yAxis: {
+        title: {
+          text: null
+        }
+      },
+
+      tooltip: {
+        crosshairs: true,
+        shared: true,
+        valueSuffix: '°F',
+        xDateFormat: '%A, %b %e'
+      },
+
+      legend: {
+        enabled: false
+      },
+
+      series: [{
+        name: 'Temperatures',
+        data: nb,
+          marker:{
+            fillColor:"#4192ff"
+          },
+          lineColor: '#ffa40d',
+          color: {
+  linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+  stops: [
+      [0, '#ed700f'],
+      [0.5, '#d6bf9b'],
+      [1, '#a5d6f8']
+  ]
+},
+          opacity:0.6
+      }]
+
+    });
+fun16();
+
+            }
+            else {
+                downUp.alt ="1";
+                var chart1 = document.getElementById("chart1");
+                var chart2 = document.getElementById("chart2");
+                chart1.style.display = "none";
+                chart2.style.display = "none";
+                downUp.src = '../../static/img/point-down-512.png';
+            }
+
+
+
+}
+
+
+
+
+function  fun16() {
+    var jsonData = fun14();
+function Meteogram(json, container) {
+  // Parallel arrays for the chart data, these are populated as the JSON file
+  // is loaded
+
+  this.precipitations = [];
+  this.precipitationsError = []; // Only for some data sets
+  this.winds = [];
+  this.temperatures = [];
+  this.pressures = [];
+
+  // Initialize
+  this.json = json;
+  this.container = container;
+
+  // Run
+  this.parseYrData();
+}
+
+/**
+ * Mapping of the symbol code in yr.no's API to the icons in their public
+ * GitHub repo, as well as the text used in the tooltip.
+ *
+ * https://api.met.no/weatherapi/weathericon/2.0/documentation
+ */
+
+
+
+
+/**
+ * Draw blocks around wind arrows, below the plot area
+ */
+Meteogram.prototype.drawBlocksForWindArrows = function (chart) {
+  const xAxis = chart.xAxis[0];
+
+  for (
+    let pos = xAxis.min, max = xAxis.max, i = 0;
+    pos <= max + 36e5; pos += 36e5,
+    i += 1
+  ) {
+
+    // Get the X position
+    const isLast = pos === max + 36e5,
+      x = Math.round(xAxis.toPixels(pos)) + (isLast ? 0.5 : -0.5);
+
+    // Draw the vertical dividers and ticks
+    const isLong = this.resolution > 36e5 ?
+      pos % this.resolution === 0 :
+      i % 2 === 0;
+
+    chart.renderer
+      .path([
+        'M', x, chart.plotTop + chart.plotHeight + (isLong ? 0 : 28),
+        'L', x, chart.plotTop + chart.plotHeight + 32,
+        'Z'
+      ])
+      .attr({
+        stroke: chart.options.chart.plotBorderColor,
+        'stroke-width': 1
+      })
+      .add();
+  }
+
+  // Center items in block
+  chart.get('windbarbs').markerGroup.attr({
+    translateX: chart.get('windbarbs').markerGroup.translateX + 8
+  });
+
+};
+
+/**
+ * Build and return the Highcharts options structure
+ */
+Meteogram.prototype.getChartOptions = function () {
+  return {
+    chart: {
+      renderTo: this.container,
+      marginBottom: 70,
+      marginRight: 40,
+      marginTop: 50,
+      plotBorderWidth: 1,
+      height: 400,
+      alignTicks: false,
+      scrollablePlotArea: {
+        minWidth: 720
+      }
+    },
+
+    defs: {
+      patterns: [{
+        id: 'precipitation-error',
+        path: {
+          d: [
+            'M', 3.3, 0, 'L', -6.7, 10,
+            'M', 6.7, 0, 'L', -3.3, 10,
+            'M', 10, 0, 'L', 0, 10,
+            'M', 13.3, 0, 'L', 3.3, 10,
+            'M', 16.7, 0, 'L', 6.7, 10
+          ].join(' '),
+          stroke: '#68CFE8',
+          strokeWidth: 1
+        }
+      }]
+    },
+
+    title: {
+      text: 'Hourly Weather (For Next 5 Days)',
+      align: 'center',
+      style: {
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis'
+      }
+    },
+
+
+
+    tooltip: {
+      shared: true,
+      useHTML: true,
+      headerFormat:
+        '<small>{point.x:%A, %b %e, %H:%M:%S} </small><br>'
+
+    },
+
+    xAxis: [{ // Bottom X axis
+      type: 'datetime',
+      tickInterval: 4 * 36e5, // two hours
+      minorTickInterval: 36e5, // one hour
+      tickLength: 0,
+      gridLineWidth: 1,
+      gridLineColor: 'rgba(128, 128, 128, 0.1)',
+      startOnTick: false,
+      endOnTick: false,
+      minPadding: 0,
+      maxPadding: 0,
+      offset: 30,
+      showLastLabel: true,
+      labels: {
+        format: '{value:%H}'
+      },
+      crosshair: true
+    }, { // Top X axis
+      linkedTo: 0,
+      type: 'datetime',
+      tickInterval: 24 * 3600 * 1000,
+      labels: {
+        format: '{value:<span style="font-size: 12px; font-weight: bold">%a</span> %b %e}',
+        align: 'left',
+        x: 3,
+        y: -5
+      },
+      opposite: true,
+      tickLength: 20,
+      gridLineWidth: 1
+    }],
+
+    yAxis: [{ // temperature axis
+      title: {
+        text: null
+      },
+      labels: {
+        format: '{value}°',
+        style: {
+          fontSize: '10px'
+        },
+        x: -3
+      },
+      plotLines: [{ // zero plane
+        value: 0,
+        color: '#bb2429',
+        width: 1,
+        zIndex: 2
+      }],
+      maxPadding: 0.3,
+      minRange: 8,
+      tickInterval: 1,
+      gridLineColor: 'rgba(128, 128, 128, 0.1)'
+
+    }, { // precipitation axis
+      title: {
+        text: null
+      },
+      labels: {
+        enabled: false
+      },
+      gridLineWidth: 0,
+      tickLength: 0,
+      minRange: 10,
+      min: 0
+
+    }, { // Air pressure
+      allowDecimals: false,
+      title: { // Title on top of axis
+        text: 'inHg',
+        offset: 0,
+        align: 'high',
+        rotation: 0,
+        style: {
+          fontSize: '10px',
+          color: '#fdb84b'
+        },
+        textAlign: 'left',
+        x: 3
+      },
+      labels: {
+        style: {
+          fontSize: '8px',
+          color: '#fdb84b'
+        },
+        y: 2,
+        x: 3
+      },
+      gridLineWidth: 0,
+      opposite: true,
+      showLastLabel: false
+    }],
+
+    legend: {
+      enabled: false
+    },
+
+    plotOptions: {
+      series: {
+        pointPlacement: 'between'
+      }
+    },
+
+
+    series: [{
+      name: 'Temperature',
+      data: this.temperatures,
+      type: 'spline',
+      marker: {
+        enabled: false,
+        states: {
+          hover: {
+            enabled: true
+          }
+        }
+      },
+      tooltip: {
+        pointFormat: '<span style="color:{point.color}">\u25CF</span> ' +
+          '{series.name}: <b>{point.y}°F</b><br/>'
+      },
+      zIndex: 1,
+      color: '#FF3333',
+      negativeColor: '#48AFE8'
+    }, {
+      name: 'Precipitation',
+      data: this.precipitationsError,
+      type: 'column',
+      color: 'url(#precipitation-error)',
+      yAxis: 1,
+      groupPadding: 0,
+      pointPadding: 0,
+      tooltip: {
+        valueSuffix: ' %',
+        pointFormat: '<span style="color:{point.color}">\u25CF</span> ' +
+          '{series.name}: <b>{point.minvalue} % - {point.maxvalue} %</b><br/>'
+      },
+      grouping: false,
+      dataLabels: {
+        enabled: this.hasPrecipitationError,
+        filter: {
+          operator: '>',
+          property: 'maxValue',
+          value: 0
+        },
+        style: {
+          fontSize: '8px',
+          color: 'gray'
+        }
+      }
+    }, {
+      name: 'Humidity',
+      data: this.precipitations,
+      type: 'column',
+      color: '#68CFE8',
+      yAxis: 0,
+      groupPadding: 0,
+      pointPadding: 0,
+      grouping: false,
+      dataLabels: {
+        enabled: !this.hasPrecipitationError,
+        filter: {
+          operator: '>',
+          property: 'y',
+          value: 0
+        },
+        style: {
+          fontSize: '8px',
+          color: 'gray'
+        }
+      },
+      tooltip: {
+        valueSuffix: ' %'
+      }
+    }, {
+      name: 'Air pressure',
+      color: '#fdb84b',
+      data: this.pressures,
+      marker: {
+        enabled: false
+      },
+      shadow: false,
+      tooltip: {
+        valueSuffix: ' inHg'
+      },
+      dashStyle: 'shortdot',
+      yAxis: 2
+    }, {
+      name: 'Wind',
+      type: 'windbarb',
+      id: 'windbarbs',
+      color: Highcharts.getOptions().colors[1],
+      lineWidth: 1.5,
+      data: this.winds,
+      vectorLength: 18,
+      yOffset: -15,
+      tooltip: {
+        valueSuffix: ' mph'
+      }
+    }]
+  };
+};
+
+/**
+ * Post-process the chart from the callback function, the second argument
+ * Highcharts.Chart.
+ */
+Meteogram.prototype.onChartLoad = function (chart) {
+
+
+  this.drawBlocksForWindArrows(chart);
+
+};
+
+/**
+ * Create the chart. This function is called async when the data file is loaded
+ * and parsed.
+ */
+Meteogram.prototype.createChart = function () {
+  this.chart = new Highcharts.Chart(this.getChartOptions(), chart => {
+    this.onChartLoad(chart);
+  });
+};
+
+Meteogram.prototype.error = function () {
+  document.getElementById('loading').innerHTML =
+    '<i class="fa fa-frown-o"></i> Failed loading data, please try again later';
+};
+
+/**
+ * Handle the data. This part of the code is not Highcharts specific, but deals
+ * with yr.no's specific data format
+ */
+Meteogram.prototype.parseYrData = function () {
+
+  let pointStart;
+
+  if (!this.json) {
+    return this.error();
+  }
+
+  // Loop over hourly (or 6-hourly) forecasts
+  this.json['msg']['data']['timelines'][1]['intervals'].forEach((node, i) => {
+
+    const x = Date.parse(node['startTime']),
+      nextHours =node['values']['humidity'],
+      to = x + 36e5;
+
+    if (to > pointStart + 144 * 36e5) {
+      return;
+    }
+
+    // Populate the parallel arrays
+
+
+    this.temperatures.push({
+      x,
+      y: node['values']['temperature'],
+      // custom options used in the tooltip formatter
+      to,
+
+    });
+
+    this.precipitations.push({
+      x,
+      y: nextHours
+    });
+
+    if (i % 2 === 0) {
+      this.winds.push({
+        x,
+        value:  node['values']['windSpeed'],
+        direction: node['values']['windDirection']
+      });
+    }
+
+    this.pressures.push({
+      x,
+      y: node['values']['pressureSeaLevel']
+    });
+
+    if (i === 0) {
+      pointStart = (x + to) / 2;
+    }
+  });
+
+  // Create the chart when the data is loaded
+  this.createChart();
+};
+// End of the Meteogram protype
+
+
+// On DOM ready...
+ window.meteogram = new Meteogram(jsonData, 'container');
+// Set the hash to the yr.no URL we want to parse
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</div>
+<div id="chart1">
+<figure class="highcharts-figure">
+  <div id="container1"></div>
+
+</figure>
+
+</div>
+<div id="blanker7">
+
+</div>
+<div id="chart2">
+<figure class="highcharts-figure">
+    <div id="takeup"></div>
+    <div id="container">
+    </div>
+</figure>
+</div>
+<div id="blanker8">
+
+</div>
+</body>
+</html>
