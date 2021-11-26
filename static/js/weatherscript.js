@@ -84,7 +84,7 @@ async function  fun1() {
       }
       data = $('#form1').serialize()+"&flag="+"false";
       if (temp.value === "no"){
-          const request =  await fetch("https://ipinfo.io/json?token=a0cca1bb9680cf");
+          const request =  await fetch("https://ipinfo.io/json?token=");
           const json =  await request.json();
           data = "street="+json.loc+"&city="+json.city+"&selectstate="+json.region+"&flag="+"true";
       }
