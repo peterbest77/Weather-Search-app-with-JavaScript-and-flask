@@ -31,8 +31,8 @@ import requests
 # print(response.text)
 # url = 'https://api.tomorrow.io/v4/timelines?location=-' \
 #       '73.98529171943665,40.75872069597532&fields=tempe' \
-#       'rature&timesteps=1h&units=metric&apikey=YyAFenHBB' \
-#       'vWKX4VZYkRY0SNjrpGEchNL'
+#       'rature&timesteps=1h&units=metric&apikey=' \
+#       ''
 
 
 # headers = {"Accept": "application/json"}
@@ -76,7 +76,7 @@ def form_data():
                                   "precipitationProbability", "precipitationType", "sunriseTime", "sunsetTime",
                                   "visibility", "moonPhase", "cloudCover"], "units": "imperial",
                        "timesteps": ["current", "1h", "1d"], "timezone": "America/Los_Angeles",
-                       "apikey": "YyAFenHBBvWKX4VZYkRY0SNjrpGEchNL"}
+                       "apikey": ""}
         headers = {"Accept": "application/json"}
         response = requests.request("GET", url, headers=headers, params=querystring)
         response = response.json()
@@ -92,7 +92,7 @@ def form_data():
         street = re.sub(r'[^\w\s]', '', street)
         street = street.replace(" ", "+")
         print(city, street, state, flag)
-        url2 = "https://maps.googleapis.com/maps/api/geocode/json?address="+street + city + state + "&key=AIzaSyCPX__rKKqlkJ_my9RfEbYFWQykPEB9SwU"
+        url2 = "https://maps.googleapis.com/maps/api/geocode/json?address="+street + city + state + "&key="
         headers2 = {"Accept": "application/json"}
         response2 = requests.request("GET", url2, headers=headers2)
         response2 = response2.json()
@@ -110,7 +110,7 @@ def form_data():
                                   "precipitationProbability", "precipitationType", "sunriseTime", "sunsetTime",
                                   "visibility", "moonPhase", "cloudCover"], "units": "imperial",
                        "timesteps": ["current", "1h", "1d"], "timezone": "America/Los_Angeles",
-                       "apikey": "YyAFenHBBvWKX4VZYkRY0SNjrpGEchNL"}
+                       "apikey": ""}
         headers = {"Accept": "application/json"}
         response = requests.request("GET", url, headers=headers, params=querystring)
         response = response.json()
